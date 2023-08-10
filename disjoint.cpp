@@ -19,7 +19,7 @@ class Disjoint{
       return parent[node] = findPar(parent[node]);
     }
   }
-  void unoinByRank(int u, int v){
+  void unionByRank(int u, int v){
     int tp_v = parent[v];
     int tp_u = parent[u];
     if(tp_v == tp_u) return;
