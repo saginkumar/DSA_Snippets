@@ -41,12 +41,12 @@ signed main(){
   freopen("output.txt","w",stdout); 
   #endif
   Disjoint ds(7);
-  ds.unoinByRank(1,2);
-  ds.unoinByRank(2,3);
-  ds.unoinByRank(4,5);
-  ds.unoinByRank(6,7);
-  ds.unoinByRank(3,4);
-  ds.unoinByRank(4, 7);
+  ds.unionByRank(1,2);
+  ds.unionByRank(2,3);
+  ds.unionByRank(4,5);
+  ds.unionByRank(6,7);
+  ds.unionByRank(3,4);
+  ds.unionByRank(4, 7);
   cout << ds.findPar(2) << " "<< ds.findPar(7);
 	return 0;
 }
