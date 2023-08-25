@@ -2,11 +2,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 class Disjoint{
-  vector<int>parent, rank;
+  vector<int>parent, rank, size;
   public:
   Disjoint(int n){
     parent.resize(n+1, 0);
     rank.resize(n+1);
+    size.resize(n+1, 1);
     for(int i=0; i<=n; i++){
       parent[i] = i;
     }
@@ -33,6 +34,26 @@ class Disjoint{
       parent[tp_v] = tp_u;
       rank[tp_u]++;
     }
+  }
+  bool unionBySize(int x, int y) {
+    int rootX = findPar(x);
+    int rootY = findPar(y);
+    if(rootX == rootY)
+      return false;
+    
+    if(size[rootX] < size[rootY]) {
+      parent[rootX] = rootY;
+      size[rootY] += size[rootX];
+    }
+    else{
+      parent[rootY] = rootX;
+      size[rootX] += size[rootY];
+    }
+    return true;
+  }
+
+  int getSize(int x) {  // Add a public method to get the size of a set
+    return size[findPar(x)];
   }
 };
 signed main(){
